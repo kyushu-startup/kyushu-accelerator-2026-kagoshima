@@ -226,31 +226,36 @@ img{
   margin-top:.7rem;
 }
 
-/* 主催・共催（業界最高水準の信頼感・メガサイズレイアウト） */
+/* 主催・共催（アリーナ・ステージ構造） */
 .organizers{
   display:flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 3.5rem;
   margin-top:3.5rem;
-  max-width: 1060px; /* 他のコンテンツと同じ最大横幅までダイナミックに拡張 */
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
+
+/* 巨大な1枚の白いアリーナ（帯） */
 .org-group{
-  background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
-  border: 1px solid rgba(245,200,66,.28);
-  border-radius:28px;
-  padding: 4rem 3rem; /* 余白をさらに贅沢に取り、堂々とした風格へ */
+  background: #ffffff; /* 完全なホワイトステージ */
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 28px;
+  padding: 4.5rem 3rem; /* 贅沢で開放的な余白 */
   text-align: center;
-  backdrop-filter:blur(15px);
-  box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.8);
+  position: relative;
+  overflow: hidden;
 }
+
+/* 白背景上での文字の可読性を保つためゴールドのトーンを微調整 */
 .org-label{
   font-family:'Noto Serif JP',serif;
   font-weight:900;
-  color:var(--gold);
+  color: var(--gold-dark); /* 白背景で見えやすいよう、少し濃いめのリッチゴールドに調整 */
   font-size: 1.4rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   letter-spacing:.4em;
   display: flex;
   align-items: center;
@@ -261,33 +266,36 @@ img{
   content: '';
   display: block;
   width: 60px;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--gold));
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--gold-dark));
 }
 .org-label::after {
-  background: linear-gradient(to left, transparent, var(--gold));
+  background: linear-gradient(to left, transparent, var(--gold-dark));
 }
+
 .logo-row{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap: 5rem; /* ロゴ同士の間隔を広げ、窮屈さを完全撤廃 */
+  gap: 6rem; /* ロゴ同士の距離をさらに広く、ダイナミックに配置 */
   flex-wrap:wrap;
 }
-/* ロゴ画像を圧倒的に目立たせるメガサイズマット */
+
+/* 個別の枠（座布団）を完全廃止し、ロゴそのものを極限まで巨大化 */
 .logo-row img{
-  max-height: 110px; /* 85pxから110pxへ大幅拡大。一目で認識できる最高峰の視認性 */
-  max-width: 320px;  /* 横幅の上限も260pxから320pxへ拡張 */
+  max-height: 120px; /* 120pxまで巨大化。文字がハッキリ視認できます */
+  max-width: 340px;  /* 横幅の制限も大幅に拡張 */
+  width: auto;
+  height: auto;
   object-fit:contain;
-  background: #ffffff;
-  padding: 1.5rem 3rem; /* 白背景（座布団）自体も一回り大きくリッチに */
-  border-radius: 18px;
-  box-shadow: 0 12px 35px rgba(0,0,0,0.45);
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: transparent; /* 個々の枠（座布団）を完全透過 */
+  padding: 0;             /* 余計なパディングを排除してロゴ自体を大きく */
+  border-radius: 0;
+  box-shadow: none;       /* 個別の影を消し、フラットでモダンな表示に */
+  transition: transform 0.3s ease;
 }
 .logo-row img:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 45px rgba(245,200,66,0.2);
+  transform: scale(1.05); /* ホバー時は優しく拡大 */
 }
 
 footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing: 0.05em;}
@@ -309,15 +317,14 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
     height: auto;
   }
   
-  /* スマホ用の縮小・余白最適化（スマホでも限界まで大きく表示） */
-  .org-group{padding: 2.5rem 1.5rem;}
-  .org-label{margin-bottom: 2.2rem; font-size: 1.2rem;}
+  /* スマホ用の縮小・余白最適化（白いアリーナ全体の調整） */
+  .org-group{padding: 3rem 1.5rem; border-radius: 20px;}
+  .org-label{margin-bottom: 2.5rem; font-size: 1.2rem;}
   .org-label::before, .org-label::after { width: 30px; }
-  .logo-row{gap: 2rem;}
+  .logo-row{gap: 3.5rem;} /* スマホでもロゴが重ならず大きく見える適度な距離感 */
   .logo-row img{
-    max-height: 85px;
+    max-height: 80px;  /* スマホでの表示限界サイズに調整 */
     max-width: 240px;
-    padding: 1rem 1.8rem;
   }
 }
 </style>
@@ -511,10 +518,12 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
   </a>
 </section>
 
+<!-- 主催・共催セクション（白い巨大なアリーナ構造） -->
 <section class="section">
   <h2 class="section-title">主催・共催</h2>
 
   <div class="organizers">
+    <!-- 主催 -->
     <div class="org-group">
       <div class="org-label">主催</div>
       <div class="logo-row">
@@ -523,6 +532,7 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
       </div>
     </div>
 
+    <!-- 共催 -->
     <div class="org-group">
       <div class="org-label">共催</div>
       <div class="logo-row">

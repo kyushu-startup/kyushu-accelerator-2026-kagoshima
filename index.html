@@ -149,12 +149,19 @@ img{
   display: flex;
   flex-direction: column;
 }
+/* 全体が入るように修正 */
 .pre-visual img {
   width:100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(245, 200, 66, 0.15);
   border-radius:18px;
   box-shadow:0 0 30px rgba(245,200,66,.15);
+}
+/* 元々収まりの良いワークショップ画像はcoverのまま綺麗に表示 */
+.pre-visual figure:nth-child(2) img {
+  object-fit: cover;
 }
 .pre-visual figcaption {
   text-align:center;
@@ -221,54 +228,61 @@ img{
   margin-top:.7rem;
 }
 
-/* 主催・共催 */
+/* 主催・共催（デザインを全体の世界観に統合） */
 .organizers{
   display:flex;
-  gap:1.5rem;
+  gap:2rem;
   justify-content:center;
   align-items:stretch;
   flex-wrap:wrap;
   margin-top:2.5rem;
 }
 .org-group{
-  background:rgba(255,255,255,.96);
-  color:#111;
-  border-radius:18px;
-  padding:1.5rem;
-  min-width:280px;
+  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+  border:1px solid rgba(245,200,66,.2);
+  border-radius:20px;
+  padding:2rem;
+  min-width:300px;
   flex:1;
-  max-width:520px;
+  max-width:500px;
   display: flex;
   flex-direction: column;
+  backdrop-filter:blur(10px);
 }
 .org-label{
   font-weight:900;
-  color:#222;
-  margin-bottom:1.2rem;
+  color:var(--gold);
+  font-size: 1.1rem;
+  margin-bottom:1.5rem;
   text-align:center;
-  letter-spacing:.15em;
+  letter-spacing:.2em;
+  border-bottom: 1px solid rgba(245,200,66,.15);
+  padding-bottom: 0.5rem;
 }
 .logo-row{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:1.5rem;
+  gap:2rem;
   flex-wrap:wrap;
   flex-grow: 1;
 }
+/* ロゴ画像を綺麗に見せるための調整 */
 .logo-row img{
-  max-height:60px;
+  max-height:55px;
   max-width:180px;
   object-fit:contain;
+  background: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 .logo-row img.logo-lika{
   background:#000;
-  padding:.5rem .8rem;
-  max-height:54px;
-  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
 }
 
-footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,255,.3);}
+footer{text-align:center;padding:4rem 1rem 3rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing: 0.05em;}
 
 @media (max-width:900px){
   .pitch-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
@@ -286,6 +300,8 @@ footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,25
     aspect-ratio: auto; 
     height: auto;
   }
+  .organizers{flex-direction: column; align-items: center;}
+  .org-group{width: 100%;}
   .logo-row img{max-width:160px;}
 }
 </style>
@@ -344,7 +360,7 @@ footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,25
       <h3>九州各地の挑戦が集うピッチ</h3>
       <div class="day-date">2026年9月12日（土）13:00〜15:00</div>
       <p>
-        九州各地で挑戦する起業家・事業者が登壇。参加者との対話やフィードバックを通じて、次の挑戦へ進むための接点を生み出します。
+        九州各地で挑戦する起起業家・事業者が登壇。参加者との対話やフィードバックを通じて、次の挑戦へ進むための接点を生み出します。
       </p>
     </article>
   </div>
@@ -374,7 +390,7 @@ footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,25
   <h2 class="section-title">イベント概要</h2>
   <p class="section-sub">
     九州各地の挑戦者が集まり、つながり、加速する。<br>
-    起業家・支援者・地域プレイヤーが交差する共創イベント。
+    起起業家・支援者・地域プレイヤーが交差する共創イベント。
   </p>
 
   <div class="info-grid">
@@ -412,12 +428,12 @@ footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,25
 
     <div class="info-card">
       <div class="info-label">DEADLINE</div>
-      <div class="info-value">参加申し込み締切：<br>2026年9月9日（水）</div>
+      <div class="info-value">参加申し込み締切：<br>2026年9月9日（Wednesday）</div>
     </div>
 
     <div class="info-card">
       <div class="info-label">TARGET</div>
-      <div class="info-value">起業家・スタートアップ・支援者・事業会社・学生・地域プレイヤー</div>
+      <div class="info-value">起起業家・スタートアップ・支援者・事業会社・学生・地域プレイヤー</div>
     </div>
   </div>
 </section>
@@ -425,7 +441,7 @@ footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,25
 <section class="section pitch-section">
   <h2 class="section-title pitch-title">ピッチ予定者</h2>
   <p class="section-sub">
-    九州各地から、多様なテーマに挑む起業家・事業者が登壇予定です。<br>
+    九州各地から、多様なテーマに挑む起起業家・事業者が登壇予定です。<br>
     登壇者情報は決定次第、順次公開します。<br>
     <span class="pitch-note">※登壇者・事業内容は追加・変更となる可能性があります。</span>
   </p>
@@ -463,13 +479,13 @@ footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,25
   <h2 class="section-title">宮崎開催の様子</h2>
   <p class="section-sub">
     2026年6月に宮崎で第1回を開催。<br>
-    九州各地から起業家・事業者・支援者が集まり、ピッチと交流を通じて新たなつながりが生まれました。
+    九州各地から起起業家・事業者・支援者が集まり、ピッチと交流を通じて新たなつながりが生まれました。
   </p>
 
   <div class="event-gallery">
     <figure><img src="登壇風景①.jpeg" alt="宮崎開催の会場風景"><figcaption>会場風景</figcaption></figure>
     <figure><img src="登壇風景②.jpeg" alt="宮崎開催の登壇風景"><figcaption>登壇風景</figcaption></figure>
-    <figure><img src="event-group.jpeg" alt="宮崎開催の集合写真"><figcaption>集合写真</figcaption></figure>
+    <figure><img src="event-group.jpeg" alt="宮崎開催の集合写真"><figcaption>宮崎開催 集合写真</figcaption></figure>
   </div>
 </section>
 
@@ -486,7 +502,7 @@ footer{text-align:center;padding:3rem 1rem;font-size:.8rem;color:rgba(255,255,25
   <div class="org-group">
     <div class="org-label">主催</div>
     <div class="logo-row">
-      <img src="logo-chaing.jpeg" alt="株式会社CHAIN-GEE">
+      <img src="logo-chaing.jpg" alt="株式会社CHAIN-GEE">
       <img src="logo-sunao.png" alt="株式会社SUNAO製薬">
     </div>
   </div>

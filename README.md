@@ -1,1 +1,0 @@
-# -kyushu-accelerator-2026kagoshima

@@ -149,6 +149,17 @@ img{
   display: flex;
   flex-direction: column;
 }
+/* リンク化に伴い、アンカー用のスタイルを追加 */
+.pre-link {
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  border-radius:18px;
+  overflow: hidden;
+}
+.pre-link:hover {
+  opacity: 0.85; /* ホバー時にうっすら透過させてリンクであることを伝える */
+}
 .pre-visual img {
   width:100%;
   aspect-ratio: 4 / 3;
@@ -281,21 +292,32 @@ img{
   flex-wrap:wrap;
 }
 
-/* 個別の枠（座布団）を完全廃止し、ロゴそのものを極限まで巨大化 */
+/* ロゴのアンカーリンク用スタイル */
+.logo-link{
+  display: block;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  border: none;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.logo-link:hover {
+  transform: scale(1.08); /* マウスホバーで優雅に拡大 */
+}
+
+/* ロゴ画像をアリーナ内で限界まで巨大化 */
 .logo-row img{
   max-height: 120px; /* 120pxまで巨大化。文字がハッキリ視認できます */
   max-width: 340px;  /* 横幅の制限も大幅に拡張 */
   width: auto;
   height: auto;
   object-fit:contain;
-  background: transparent; /* 個々の枠（座布団）を完全透過 */
-  padding: 0;             /* 余計なパディングを排除してロゴ自体を大きく */
+  background: transparent;
+  padding: 0;
   border-radius: 0;
-  box-shadow: none;       /* 個別の影を消し、フラットでモダンな表示に */
-  transition: transform 0.3s ease;
-}
-.logo-row img:hover {
-  transform: scale(1.05); /* ホバー時は優しく拡大 */
+  box-shadow: none;
+  display: block;
 }
 
 footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing: 0.05em;}
@@ -321,7 +343,8 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
   .org-group{padding: 3rem 1.5rem; border-radius: 20px;}
   .org-label{margin-bottom: 2.5rem; font-size: 1.2rem;}
   .org-label::before, .org-label::after { width: 30px; }
-  .logo-row{gap: 3.5rem;} /* スマホでもロゴが重ならず大きく見える適度な距離感 */
+  .logo-row{gap: 3.5rem;}
+  .logo-link:hover{transform: scale(1.04);} /* スマホではホバー拡大を穏やかに */
   .logo-row img{
     max-height: 80px;  /* スマホでの表示限界サイズに調整 */
     max-width: 240px;
@@ -398,7 +421,10 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
 
   <div class="pre-visual">
     <figure>
-      <img src="プレイベントトップ画像.png" alt="宮崎で開催したプレイベントの告知画像">
+      <!-- プレイベントトップ画像に前回のイベント詳細リンクを追加 -->
+      <a href="https://www.moc.ne.jp/event/5498.html" class="pre-link" target="_blank" rel="noopener noreferrer">
+        <img src="プレイベントトップ画像.png" alt="宮崎で開催したプレイベントの告知画像">
+      </a>
       <figcaption>前回プレイベントの様子</figcaption>
     </figure>
 
@@ -518,7 +544,7 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
   </a>
 </section>
 
-<!-- 主催・共催セクション（白い巨大なアリーナ構造） -->
+<!-- 主催・共催セクション（リンク対応・白い巨大なアリーナ構造） -->
 <section class="section">
   <h2 class="section-title">主催・共催</h2>
 
@@ -527,8 +553,14 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
     <div class="org-group">
       <div class="org-label">主催</div>
       <div class="logo-row">
-        <img src="logo-chaing.jpeg" alt="株式会社CHAIN-GEE">
-        <img src="logo-sunao.png" alt="株式会社SUNAO製薬">
+        <!-- CHAIN-GEE公式リンク -->
+        <a href="https://www.chain-gee.com/" class="logo-link" target="_blank" rel="noopener noreferrer">
+          <img src="logo-chaing.jpeg" alt="株式会社CHAIN-GEE">
+        </a>
+        <!-- SUNAO製薬公式リンク -->
+        <a href="https://sunao-seiyaku.com/" class="logo-link" target="_blank" rel="noopener noreferrer">
+          <img src="logo-sunao.png" alt="株式会社SUNAO製薬">
+        </a>
       </div>
     </div>
 
@@ -536,7 +568,10 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
     <div class="org-group">
       <div class="org-label">共催</div>
       <div class="logo-row">
-        <img src="logo-lika.png" alt="Li-Ka Work Lounge">
+        <!-- Li-Ka Work Lounge公式リンク -->
+        <a href="https://li-ka-worklounge.com/" class="logo-link" target="_blank" rel="noopener noreferrer">
+          <img src="logo-lika.png" alt="Li-Ka Work Lounge">
+        </a>
       </div>
     </div>
   </div>

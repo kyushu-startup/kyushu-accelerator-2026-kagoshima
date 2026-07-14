@@ -149,7 +149,6 @@ img{
   display: flex;
   flex-direction: column;
 }
-/* 全体が入るように修正 */
 .pre-visual img {
   width:100%;
   aspect-ratio: 4 / 3;
@@ -159,7 +158,6 @@ img{
   border-radius:18px;
   box-shadow:0 0 30px rgba(245,200,66,.15);
 }
-/* 元々収まりの良いワークショップ画像はcoverのまま綺麗に表示 */
 .pre-visual figure:nth-child(2) img {
   object-fit: cover;
 }
@@ -228,61 +226,70 @@ img{
   margin-top:.7rem;
 }
 
-/* 主催・共催（デザインを全体の世界観に統合） */
+/* 主催・共催（プロフェッショナル・信頼感を高めた大型レイアウト） */
 .organizers{
   display:flex;
-  gap:2rem;
-  justify-content:center;
-  align-items:stretch;
-  flex-wrap:wrap;
-  margin-top:2.5rem;
+  flex-direction: column;
+  gap:2.5rem;
+  margin-top:3.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .org-group{
-  background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
-  border:1px solid rgba(245,200,66,.2);
-  border-radius:20px;
-  padding:2rem;
-  min-width:300px;
-  flex:1;
-  max-width:500px;
-  display: flex;
-  flex-direction: column;
-  backdrop-filter:blur(10px);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  border: 1px solid rgba(245,200,66,.25);
+  border-radius:24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  backdrop-filter:blur(15px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
 }
 .org-label{
+  font-family:'Noto Serif JP',serif;
   font-weight:900;
   color:var(--gold);
-  font-size: 1.1rem;
-  margin-bottom:1.5rem;
-  text-align:center;
-  letter-spacing:.2em;
-  border-bottom: 1px solid rgba(245,200,66,.15);
-  padding-bottom: 0.5rem;
+  font-size: 1.3rem;
+  margin-bottom: 2.5rem;
+  letter-spacing:.3em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.org-label::before, .org-label::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.org-label::after {
+  background: linear-gradient(to left, transparent, var(--gold));
 }
 .logo-row{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:2rem;
+  gap: 4rem;
   flex-wrap:wrap;
-  flex-grow: 1;
 }
-/* ロゴ画像を綺麗に見せるための調整 */
+/* ロゴ画像を際立たせるプロ用透過背景マット */
 .logo-row img{
-  max-height:55px;
-  max-width:180px;
+  max-height: 85px;
+  max-width: 260px;
   object-fit:contain;
-  background: #fff;
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  background: #ffffff;
+  padding: 1rem 2rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
 }
-.logo-row img.logo-lika{
-  background:#000;
-  border: 1px solid rgba(255,255,255,0.15);
+.logo-row img:hover {
+  transform: translateY(-3px);
 }
 
-footer{text-align:center;padding:4rem 1rem 3rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing: 0.05em;}
+footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing: 0.05em;}
 
 @media (max-width:900px){
   .pitch-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
@@ -300,9 +307,16 @@ footer{text-align:center;padding:4rem 1rem 3rem;font-size:.8rem;color:rgba(255,2
     aspect-ratio: auto; 
     height: auto;
   }
-  .organizers{flex-direction: column; align-items: center;}
-  .org-group{width: 100%;}
-  .logo-row img{max-width:160px;}
+  
+  /* スマホ用の縮小・余白最適化 */
+  .org-group{padding: 2rem 1.5rem;}
+  .org-label{margin-bottom: 1.8rem; font-size: 1.1rem;}
+  .logo-row{gap: 1.5rem;}
+  .logo-row img{
+    max-height: 70px;
+    max-width: 200px;
+    padding: 0.8rem 1.2rem;
+  }
 }
 </style>
 </head>
@@ -428,7 +442,7 @@ footer{text-align:center;padding:4rem 1rem 3rem;font-size:.8rem;color:rgba(255,2
 
     <div class="info-card">
       <div class="info-label">DEADLINE</div>
-      <div class="info-value">参加申し込み締切：<br>2026年9月9日（水）</div>
+      <div class="info-value">参加申し込み締切：<br>2026年9月9日（神）</div>
     </div>
 
     <div class="info-card">
@@ -467,7 +481,7 @@ footer{text-align:center;padding:4rem 1rem 3rem;font-size:.8rem;color:rgba(255,2
     これは単なる賞レースではない。<br>
     登壇者と参加者が直接つながり、対話を通じて次の挑戦へ進むための場所。<br><br>
 
-    鹿児島から、九州各地、精度全国・世界へ。<br>
+    鹿児島から、九州各地、全国・世界へ。<br>
     地域を越えて、挑戦の熱量がつながっていく。<br><br>
 
     “Connect to the World”<br>
@@ -498,24 +512,22 @@ footer{text-align:center;padding:4rem 1rem 3rem;font-size:.8rem;color:rgba(255,2
 <section class="section">
   <h2 class="section-title">主催・共催</h2>
 
- <div class="organizers">
-  <div class="org-group">
-    <div class="org-label">主催</div>
-    <div class="logo-row">
-      <img src="logo-chaing.jpg" alt="株式会社CHAIN-GEE">
-      <img src="logo-sunao.png" alt="株式会社SUNAO製薬">
+  <div class="organizers">
+    <div class="org-group">
+      <div class="org-label">主催</div>
+      <div class="logo-row">
+        <img src="logo-chaing.jpeg" alt="株式会社CHAIN-GEE">
+        <img src="logo-sunao.png" alt="株式会社SUNAO製薬">
+      </div>
     </div>
-  </div>
 
-  <div class="org-group">
-    <div class="org-label">共催</div>
-    <div class="logo-row">
-      <img class="logo-lika"
-           src="logo-lika.png"
-           alt="Li-Ka Work Lounge">
+    <div class="org-group">
+      <div class="org-label">共催</div>
+      <div class="logo-row">
+        <img src="logo-lika.png" alt="Li-Ka Work Lounge">
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <footer>© 九州アクセラレーター2026</footer>

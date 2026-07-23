@@ -7,6 +7,7 @@
 <title>九州アクセラレーター2026 鹿児島</title>
 <meta name="description" content="九州の志、鹿児島に集う。2026年9月11日・12日、地域と挑戦がつながる2日間。">
 
+<!-- OGP設定 -->
 <meta property="og:title" content="九州アクセラレーター2026 鹿児島">
 <meta property="og:description" content="つながりが、未来を加速する。">
 <meta property="og:type" content="website">
@@ -17,6 +18,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
+<!-- Twitter Card設定 -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="九州アクセラレーター2026 鹿児島">
 <meta name="twitter:description" content="つながりが、未来を加速する。">
@@ -149,7 +151,6 @@ img{
   display: flex;
   flex-direction: column;
 }
-/* リンク化に伴い、アンカー用のスタイルを追加 */
 .pre-link {
   display: block;
   text-decoration: none;
@@ -158,7 +159,7 @@ img{
   overflow: hidden;
 }
 .pre-link:hover {
-  opacity: 0.85; /* ホバー時にうっすら透過させてリンクであることを伝える */
+  opacity: 0.85;
 }
 .pre-visual img {
   width:100%;
@@ -189,23 +190,67 @@ img{
 .pitch-section{padding-top:5rem;}
 .pitch-title{font-size:clamp(1.8rem,4vw,3rem);}
 .pitch-note{display:inline-block;margin-top:.75rem;font-size:.85rem;color:rgba(255,255,255,.55);}
-.pitch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:3rem;}
+.pitch-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-top:3rem;}
+
+/* ピッチカード基盤 */
 .pitch-card{
   background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
   border:1px solid rgba(245,200,66,.22);
   border-radius:18px;
-  padding:1.5rem;
+  padding:2rem 1.5rem;
   backdrop-filter:blur(10px);
-  min-height:215px;
+  min-height:280px;
   transition:.3s;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  align-items:center;
   text-align:center;
 }
 .pitch-card:hover{transform:translateY(-5px);border-color:rgba(245,200,66,.55);box-shadow:0 0 28px rgba(245,200,66,.12);}
-.pitch-meta{display:inline-block;align-self:center;color:#111;background:linear-gradient(135deg,var(--gold),#ffdf6e);font-size:.75rem;font-weight:900;padding:.35em .85em;border-radius:999px;margin-bottom:1rem;}
-.pitch-card h3{font-family:'Cinzel',serif;font-size:1.35rem;letter-spacing:.08em;margin-bottom:.75rem;color:#fff;}
+.pitch-meta{display:inline-block;color:#111;background:linear-gradient(135deg,var(--gold),#ffdf6e);font-size:.75rem;font-weight:900;padding:.35em .85em;border-radius:999px;margin-bottom:1.2rem;}
+
+/* 顔写真用スタイル */
+.pitch-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(245, 200, 66, 0.4);
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* 登壇者テキスト情報 */
+.pitch-company {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+}
+.pitch-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.75rem;
+}
+.pitch-service {
+  font-size: 0.85rem;
+  color: var(--gold);
+  border: 1px solid rgba(245, 200, 66, 0.3);
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  background: rgba(245, 200, 66, 0.05);
+  line-height: 1.4;
+  display: inline-block;
+  max-width: 100%;
+}
+
+/* COMING SOON用の一時的センター表示 */
+.pitch-card.placeholder {
+  justify-content: center;
+}
+.pitch-card.placeholder h3{font-family:'Cinzel',serif;font-size:1.35rem;letter-spacing:.08em;margin-bottom:.75rem;color:#fff;}
 .pitch-desc{color:rgba(255,255,255,.68);line-height:1.85;font-size:.95rem;}
 
 .concept-box{max-width:850px;margin:0 auto;background:rgba(255,255,255,.04);border:1px solid rgba(245,200,66,.18);border-radius:20px;padding:3rem;line-height:2.2;text-align:center;font-size:1.05rem;color:rgba(255,255,255,.82);}
@@ -237,7 +282,7 @@ img{
   margin-top:.7rem;
 }
 
-/* 主催・共催（アリーナ・ステージ構造） */
+/* 主催・共催 */
 .organizers{
   display:flex;
   flex-direction: column;
@@ -247,24 +292,20 @@ img{
   margin-left: auto;
   margin-right: auto;
 }
-
-/* 巨大な1枚の白いアリーナ（帯） */
 .org-group{
-  background: #ffffff; /* 完全なホワイトステージ */
+  background: #ffffff;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 28px;
-  padding: 4.5rem 3rem; /* 贅沢で開放的な余白 */
+  padding: 4.5rem 3rem;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.8);
   position: relative;
   overflow: hidden;
 }
-
-/* 白背景上での文字の可読性を保つためゴールドのトーンを微調整 */
 .org-label{
   font-family:'Noto Serif JP',serif;
   font-weight:900;
-  color: var(--gold-dark); /* 白背景で見えやすいよう、少し濃いめのリッチゴールドに調整 */
+  color: var(--gold-dark);
   font-size: 1.4rem;
   margin-bottom: 3.5rem;
   letter-spacing:.4em;
@@ -283,16 +324,13 @@ img{
 .org-label::after {
   background: linear-gradient(to left, transparent, var(--gold-dark));
 }
-
 .logo-row{
   display:flex;
   align-items:center;
   justify-content:center;
-  gap: 6rem; /* ロゴ同士の距離をさらに広く、ダイナミックに配置 */
+  gap: 6rem;
   flex-wrap:wrap;
 }
-
-/* ロゴのアンカーリンク用スタイル */
 .logo-link{
   display: block;
   text-decoration: none;
@@ -303,13 +341,11 @@ img{
   transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .logo-link:hover {
-  transform: scale(1.08); /* マウスホバーで優雅に拡大 */
+  transform: scale(1.08);
 }
-
-/* ロゴ画像をアリーナ内で限界まで巨大化 */
 .logo-row img{
-  max-height: 120px; /* 120pxまで巨大化。文字がハッキリ視認できます */
-  max-width: 340px;  /* 横幅の制限も大幅に拡張 */
+  max-height: 120px;
+  max-width: 340px;
   width: auto;
   height: auto;
   object-fit:contain;
@@ -331,7 +367,7 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
   .section{padding:4rem 1rem;}
   .cta-btn{font-size:1rem;padding:1em 2em;}
   .info-grid,.two-days,.pitch-grid,.pre-visual,.event-gallery{grid-template-columns:1fr;}
-  .pitch-card{min-height:190px;padding:1.25rem;}
+  .pitch-card{min-height:auto;padding:2rem 1.5rem;}
   .concept-box{padding:2rem 1.2rem;font-size:1rem;line-height:2;}
   
   .pre-visual img, .event-gallery img {
@@ -339,14 +375,13 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
     height: auto;
   }
   
-  /* スマホ用の縮小・余白最適化（白いアリーナ全体の調整） */
   .org-group{padding: 3rem 1.5rem; border-radius: 20px;}
   .org-label{margin-bottom: 2.5rem; font-size: 1.2rem;}
   .org-label::before, .org-label::after { width: 30px; }
   .logo-row{gap: 3.5rem;}
-  .logo-link:hover{transform: scale(1.04);} /* スマホではホバー拡大を穏やかに */
+  .logo-link:hover{transform: scale(1.04);}
   .logo-row img{
-    max-height: 80px;  /* スマホでの表示限界サイズに調整 */
+    max-height: 80px;
     max-width: 240px;
   }
 }
@@ -406,7 +441,7 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
       <h3>九州各地の挑戦が集うピッチ</h3>
       <div class="day-date">2026年9月12日（土）13:00〜15:00</div>
       <p>
-        九州各地で挑戦する起業家・事業者が登壇。参加者との対話やフィードバックを通じて、次の挑戦へ進むための接点を生み出します。
+        九州各地で挑戦する起業家・事業者が登壇。参加者との対話やフィードバックを通じて、次の挑戦へ進むための接点を生み出します。イベント終了後には懇親会も開催します。
       </p>
     </article>
   </div>
@@ -424,12 +459,12 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
       <a href="https://www.moc.ne.jp/event/5498.html" class="pre-link" target="_blank" rel="noopener noreferrer">
         <img src="プレイベントトップ画像.png" alt="宮崎で開催したプレイベントの告知画像">
       </a>
-      <figcaption>宮崎開催プレイベント※詳細は画像のリンクへ</figcaption>
+      <figcaption>前回プレイベントの様子</figcaption>
     </figure>
 
     <figure>
       <img src="pre-workshop.jpeg" alt="宮崎プレイベントのワークショップ">
-      <figcaption>宮崎開催プレイベントのワークショップ風景</figcaption>
+      <figcaption>宮崎開催時のワークショップ</figcaption>
     </figure>
   </div>
 </section>
@@ -454,23 +489,25 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
 
     <div class="info-card">
       <div class="info-label">NETWORKING</div>
-      <div class="info-value">2026年9月12日（土）<br>15:30〜 懇親会<br>（別会場で開催予定）</div>
+      <div class="info-value">2026年9月12日（土）<br>15:30〜 懇親会</div>
     </div>
 
     <div class="info-card">
       <div class="info-label">PLACE</div>
       <div class="info-value">
-        Li-Ka Work Lounge<br>
-        鹿児島市中央町19-40<br>
-        Li-Ka1920 5階
+        partyhall HINATA<br>
+        〒892-0842<br>
+        鹿児島県鹿児島市東千石町3-41<br>
+        キャパルボ 3階
       </div>
     </div>
 
     <div class="info-card">
       <div class="info-label">FEE</div>
       <div class="info-value">
-        イベント参加：無料<br>
-        懇親会：詳細は後日ご案内
+        ピッチイベント：無料<br>
+        懇親会：5,000円<br>
+        <span style="font-size:0.85em; font-weight:normal; color:rgba(255,255,255,0.7);">（和食ビュッフェ形式＋飲み放題付き）</span>
       </div>
     </div>
 
@@ -495,15 +532,25 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
   </p>
 
   <div class="pitch-grid">
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
-    <article class="pitch-card"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    
+    <!-- 1人目のサンプル -->
+    <article class="pitch-card">
+      <div class="pitch-meta">登壇者</div>
+      <img src="avatar-placeholder.png" alt="登壇者顔写真" class="pitch-avatar">
+      <div class="pitch-company">株式会社サンプルスタートアップ</div>
+      <div class="pitch-name">山田 太郎 氏</div>
+      <div class="pitch-service">次世代型コワーキングシステム「SyncWork」</div>
+    </article>
+
+    <!-- 残りの枠（COMING SOON） -->
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
+    <article class="pitch-card placeholder"><div class="pitch-meta">登壇予定者</div><h3>COMING SOON</h3><p class="pitch-desc">登壇者情報は順次公開予定</p></article>
   </div>
 </section>
 
@@ -533,7 +580,7 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
   <div class="event-gallery">
     <figure><img src="登壇風景①.jpeg" alt="宮崎開催の会場風景"><figcaption>会場風景</figcaption></figure>
     <figure><img src="登壇風景②.jpeg" alt="宮崎開催の登壇風景"><figcaption>登壇風景</figcaption></figure>
-    <figure><img src="event-group.jpeg" alt="宮崎開催の集合写真"><figcaption>開催後集合写真</figcaption></figure>
+    <figure><img src="event-group.jpeg" alt="宮崎開催の集合写真"><figcaption>宮崎開催 集合写真</figcaption></figure>
   </div>
 </section>
 
@@ -543,10 +590,12 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
   </a>
 </section>
 
+<!-- 主催・共催セクション -->
 <section class="section">
   <h2 class="section-title">主催・共催</h2>
 
   <div class="organizers">
+    <!-- 主催 -->
     <div class="org-group">
       <div class="org-label">主催</div>
       <div class="logo-row">
@@ -559,6 +608,7 @@ footer{text-align:center;padding:5rem 1rem 4rem;font-size:.8rem;color:rgba(255,2
       </div>
     </div>
 
+    <!-- 共催 -->
     <div class="org-group">
       <div class="org-label">共催</div>
       <div class="logo-row">
